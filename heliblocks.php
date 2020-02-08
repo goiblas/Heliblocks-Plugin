@@ -4,7 +4,7 @@
  * @license     GPL2+
  *
  * @wordpress-plugin
- * Plugin Name: Lab Helibocks
+ * Plugin Name: Helibocks
  * Version:     1.0.0
  * Author:      Jesús Olazagoitia
  * Author URI:  https://goiblas.com
