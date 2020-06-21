@@ -33,15 +33,22 @@ function heliblocks_init_register_block() {
 
 	wp_register_style(
         'heliblocks_css_editor',
-        plugins_url( 'css/editor.css', __FILE__ ),
+        plugins_url( 'assets/css/editor.css', __FILE__ ),
         [],
-        filemtime( plugin_dir_path( __FILE__ ) . '/css/editor.css' )
-    );
+        filemtime( plugin_dir_path( __FILE__ ) . 'assets/css/editor.css' )
+		);
+
+	wp_localize_script(
+		'heliblocks_script_register_block',
+		'hb_assets',
+		array(
+			'algolia' => plugins_url( 'assets/img/search-by-algolia.svg', __FILE__ )
+		)
+	);
  
 	register_block_type( 'lab-heliblock-builder/lab-heliblock-builder', array(
 		'editor_script' => 'heliblocks_script_register_block',
-		'editor_style' => 'heliblocks_css_editor',
-		'style' => 'heliblocks_css_variables'
+		'editor_style' => 'heliblocks_css_editor'
 	 ));
 
 	 if ( function_exists( 'wp_set_script_translations' ) ) {
@@ -54,7 +61,7 @@ function heliblocks_init_register_block() {
 	  }
 }
 
-include __DIR__ . '/lib/register-variables.php';
-include __DIR__ . '/lib/rest-api-endpoints.php';
-include __DIR__ . '/lib/enqueue-stylesheet-variables.php';
+// include __DIR__ . '/lib/register-variables.php';
+// include __DIR__ . '/lib/rest-api-endpoints.php';
+// include __DIR__ . '/lib/enqueue-stylesheet-variables.php';
 

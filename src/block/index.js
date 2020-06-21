@@ -1,39 +1,47 @@
-import { registerBlockType } from '@wordpress/blocks';
-import { __ } from '@wordpress/i18n';
-import edit from './edit';
-import save from './save';
+import { registerBlockType } from "@wordpress/blocks";
+import { __ } from "@wordpress/i18n";
+import edit from "./edit";
+import save from "./save";
 
-import { TEXT_DOMAIN } from './../config';
+import { TEXT_DOMAIN } from "./../config";
 
-registerBlockType( 'lab-heliblock-builder/lab-heliblock-builder', {
-	title: __('Heliblock Builder', TEXT_DOMAIN),
-	icon: 'lock',
-    category: 'layout',
-    supports: {
-        align: true,
+registerBlockType("lab-heliblock-builder/lab-heliblock-builder", {
+  title: __("Heliblock Builder", TEXT_DOMAIN),
+  icon: "lock",
+  category: "layout",
+  supports: {
+    align: true
+  },
+  attributes: {
+    isChoosed: {
+      type: "boolean",
+      default: false
     },
-    attributes: {
-        html: {
-            type: 'string',
-            default: ''
-        },
-        css: {
-            type: 'string',
-            default: ''
-        },
-        isChoosed: {
-            type: 'boolean',
-            default: false
-        },
-        uniqueClassName: {
-            type: 'string',
-            default: ''
-        },
-        store: {
-            type: 'string',
-            default: '[]'
-        }
+    html: {
+      type: "string",
+      default: ""
     },
-    edit,
-    save
-} );
+    css: {
+      type: "string",
+      default: ""
+    },
+    variables: {
+      type: "array",
+      default: []
+    },
+    wrapperClassname: {
+      type: "string",
+      default: ""
+    },
+    // alignment: {
+    //   type: "string",
+    //   default: "normal"
+    // },
+    store: {
+      type: "string",
+      default: "[]"
+    }
+  },
+  edit,
+  save
+});
