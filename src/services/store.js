@@ -1,6 +1,6 @@
 class Store {
-  constructor(initialValue = [], setStore = () => {}) {
-    this._store = new Map(initialValue);
+  constructor(initialValue = "[]", setStore = () => {}) {
+    this._store = new Map(JSON.parse(initialValue));
     this.setStore = setStore;
   }
   has(key) {

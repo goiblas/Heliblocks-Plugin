@@ -21,7 +21,7 @@
     "@wordpress/e2e-test-utils": "^2.1.0",
     "@wordpress/editor": "^9.17.0",
     "@wordpress/element": "^2.14.0",
-    "@wordpress/scripts": "^6.2.0",
+    "@wordpress/scripts": "^11.0.0",
     "@wordpress/server-side-render": "^1.13.0",
     "algoliasearch": "^3.35.1",
     "chroma-js": "^2.1.0",
@@ -34,7 +34,6 @@
     "react-attr-converter": "^0.3.1",
     "react-dom": "^16.13.1",
     "react-instantsearch-dom": "^6.5.0",
-    "react-slot-fill": "^2.0.1",
     "react-test-renderer": "^16.13.1",
     "scope-css": "^1.2.1"
   },

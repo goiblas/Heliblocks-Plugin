@@ -1,4 +1,17 @@
 /* Inspector */
+.hb-image-button {
+  border: 1px solid #7e8993;
+  width: 100%;
+  padding: 3px;
+  height: 110px;
+  margin-bottom: 8px;
+}
+.hb-image-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .hb-colors-grid {
   display: flex;
   justify-content: space-between;

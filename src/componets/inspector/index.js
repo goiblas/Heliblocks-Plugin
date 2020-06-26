@@ -6,7 +6,6 @@ import {
   Button,
   Icon
 } from "@wordpress/components";
-import { Slot } from "react-slot-fill";
 import ColorSelector from "./colorSelector";
 
 const ResetButton = ({ disabled, onClick, style }) => (
@@ -75,7 +74,7 @@ const VariableControl = props => {
   }
   return null;
 };
-const Inspector = ({ variables, setVariables }) => {
+const Inspector = ({ variables, setVariables, media }) => {
   const setVariable = (name, value) => {
     const variablesUpdated = variables.map(currentVariable => {
       if (currentVariable.variable === name) {
@@ -96,6 +95,11 @@ const Inspector = ({ variables, setVariables }) => {
           />
         ))}
       </PanelBody>
+      {media.length > 0 ? (
+        <PanelBody title="Media">
+          <div style={{ marginBottom: "16px" }}>{media}</div>
+        </PanelBody>
+      ) : null}
     </InspectorControls>
   );
 };

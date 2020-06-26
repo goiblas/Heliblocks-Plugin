@@ -5,18 +5,25 @@ import Store from "../services/store";
 import Styles from "./../componets/styles";
 
 const Save = ({ attributes, setAttributes, className }) => {
-  return null;
   if (!attributes.isChoosed) {
     return null;
   }
-  // cuando lo tengo seleccionado lo parseo
-  const initialStore = JSON.parse(attributes.store);
-  const setStore = store => setAttributes({ store });
-
-  const store = new Store(initialStore, setStore);
-  const htmlParser = new HtmlParser();
 
   let counterId = 0;
+  const setStore = store => setAttributes({ store });
+  const store = new Store(attributes.store, setStore);
+  const htmlParser = new HtmlParser();
+
+  htmlParser.replaceIframeBy((node, children, index) => {
+    const id = "iframe-" + counterId++;
+    if (!store.has(id)) {
+      store.set(id, node.attribs.src);
+    }
+
+    delete node.attribs.src;
+    return <iframe src={store.get(id)} {...node.attribs} />;
+  });
+
   htmlParser.replaceMultilineBy((node, children, index) => {
     const result = ReactDOMServer.renderToStaticMarkup(children);
     const id = "multiline-" + counterId++;
@@ -30,6 +37,7 @@ const Save = ({ attributes, setAttributes, className }) => {
       className: node.attribs.class
     });
   });
+
   htmlParser.replaceTextLineBy((node, children, index) => {
     const result = ReactDOMServer.renderToStaticMarkup(children);
     const id = "line-" + counterId++;
@@ -55,16 +63,28 @@ const Save = ({ attributes, setAttributes, className }) => {
     }
     return <img {...store.get(id)} />;
   });
+  // htmlParser.replaceOrphanLinks((node, children, index) => {
+  //   const result = ReactDOMServer.renderToStaticMarkup(node);
+  //   const id = "link-" + counterId++;
+  //   if (!store.has(id)) {
+  //     store.set(id, result);
+  //   }
+  //   return createElement(RichText.Content, {
+  //     value: store.get(id),
+  //     tagName: "div"
+  //   });
+  // });
+
   const htmlParsed = htmlParser.parser(attributes.html);
   return (
-    <>
+    <div className={className}>
       <Styles
         css={attributes.css}
         variables={attributes.variables}
         root={attributes.wrapperClassname}
       />
       <div className={`${attributes.wrapperClassname}`}>{htmlParsed}</div>
-    </>
+    </div>
   );
 };
 
