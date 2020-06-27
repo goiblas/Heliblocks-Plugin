@@ -1,6 +1,5 @@
 import HtmlParser from "../services/htmlParser";
 import { RichText } from "@wordpress/block-editor";
-import ReactDOMServer from "react-dom/server";
 import Store from "../services/store";
 import Styles from "./../componets/styles";
 
@@ -15,65 +14,21 @@ const Save = ({ attributes, setAttributes, className }) => {
   const htmlParser = new HtmlParser();
 
   htmlParser.replaceIframeBy((node, children, index) => {
-    const id = "iframe-" + counterId++;
-    if (!store.has(id)) {
-      store.set(id, node.attribs.src);
-    }
-
     delete node.attribs.src;
-    return <iframe src={store.get(id)} {...node.attribs} />;
-  });
-
-  htmlParser.replaceMultilineBy((node, children, index) => {
-    const result = ReactDOMServer.renderToStaticMarkup(children);
-    const id = "multiline-" + counterId++;
-
-    if (!store.has(id)) {
-      store.set(id, result);
-    }
-    return createElement(RichText.Content, {
-      value: store.get(id),
-      tagName: node.name,
-      className: node.attribs.class
-    });
+    return <iframe src={store.get(counterId++)} {...node.attribs} />;
   });
 
   htmlParser.replaceTextLineBy((node, children, index) => {
-    const result = ReactDOMServer.renderToStaticMarkup(children);
-    const id = "line-" + counterId++;
-
-    if (!store.has(id)) {
-      store.set(id, result);
-    }
     return createElement(RichText.Content, {
-      value: store.get(id),
-      tagName: node.name,
-      className: node.attribs.class
+      value: store.get(counterId++),
+      tagName: node.name === "a" ? "div" : node.name,
+      className: node.name === "a" ? null : node.attribs.class
     });
   });
 
   htmlParser.replaceImageBy((node, children, index) => {
-    const id = "image-" + counterId++;
-    if (!store.has(id)) {
-      const imageAttribs = {
-        src: node.attribs.src,
-        alt: node.attribs.alt || ""
-      };
-      store.set(id, imageAttribs);
-    }
-    return <img {...store.get(id)} />;
+    return <img {...store.get(counterId++)} />;
   });
-  // htmlParser.replaceOrphanLinks((node, children, index) => {
-  //   const result = ReactDOMServer.renderToStaticMarkup(node);
-  //   const id = "link-" + counterId++;
-  //   if (!store.has(id)) {
-  //     store.set(id, result);
-  //   }
-  //   return createElement(RichText.Content, {
-  //     value: store.get(id),
-  //     tagName: "div"
-  //   });
-  // });
 
   const htmlParsed = htmlParser.parser(attributes.html);
   return (

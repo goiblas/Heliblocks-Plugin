@@ -10,6 +10,8 @@ import ErrorBoundary from "../componets/errorBoundary";
 import Styles from "./../componets/styles";
 import ImageUpload from "./../componets/imageUpdoad";
 import { restoreClassnameLinks } from "./../utils";
+
+
 const Edit = ({ attributes, setAttributes, className, clientId }) => {
   if (!attributes.isChoosed) {
     return (
@@ -40,7 +42,7 @@ const Edit = ({ attributes, setAttributes, className, clientId }) => {
   const inspectorMedia = [];
 
   htmlParser.replaceImageBy((node, children, index) => {
-    const id = "image-" + counterId++;
+    const id = counterId++;
     if (!store.has(id)) {
       const imageAttribs = {
         src: node.attribs.src,
@@ -59,7 +61,7 @@ const Edit = ({ attributes, setAttributes, className, clientId }) => {
   });
 
   htmlParser.replaceIframeBy((node, children, index) => {
-    const id = "iframe-" + counterId++;
+    const id = counterId++;
     if (!store.has(id)) {
       store.set(id, node.attribs.src);
     }
@@ -76,34 +78,20 @@ const Edit = ({ attributes, setAttributes, className, clientId }) => {
     return <iframe src={store.get(id)} {...node.attribs} />;
   });
 
-  htmlParser.replaceMultilineBy((node, children, index) => {
-    const result = ReactDOMServer.renderToStaticMarkup(children);
-    const id = "multiline-" + counterId++;
-
-    if (!store.has(id)) {
-      store.set(id, result);
-    }
-
-    const onChange = content => {
-      const oldContent = store.get(id);
-      store.set(id, restoreClassnameLinks(oldContent, content));
-    };
-    return (
-      <RichText
-        value={store.get(id)}
-        onChange={onChange}
-        tagName={node.name}
-        className={node.attribs.class}
-        multiline={node.children[0].name}
-      />
-    );
-  });
 
   htmlParser.replaceTextLineBy((node, children, index) => {
-    const result = ReactDOMServer.renderToStaticMarkup(children);
-    const id = "line-" + counterId++;
+    const id = counterId++;
+    const tagName = node.name === "a" ? "div" : node.name;
+    const className = node.name === "a" ? null : node.attribs.class;
+    
     if (!store.has(id)) {
-      store.set(id, result);
+      let content = null;
+      if (node.name === "a") {
+        content = ReactDOMServer.renderToStaticMarkup(<a href="#" className={node.attribs.class}>{children}</a>);
+      } else {
+        content = ReactDOMServer.renderToStaticMarkup(children);
+      }
+      store.set(id, content);
     }
 
     const onChange = content => {
@@ -115,26 +103,11 @@ const Edit = ({ attributes, setAttributes, className, clientId }) => {
       <RichText
         value={store.get(id)}
         onChange={onChange}
-        tagName={node.name}
-        className={node.attribs.class}
+        tagName={tagName}
+        className={className}
       />
     );
   });
-
-  // htmlParser.replaceOrphanLinks((node, children, index) => {
-  //   const result = ReactDOMServer.renderToStaticMarkup(node);
-  //   const id = "link-" + counterId++;
-
-  //   if (!store.has(id)) {
-  //     store.set(id, result);
-  //   }
-
-  //   const onChange = content => {
-  //     const oldContent = store.get(id);
-  //     store.set(id, restoreClassnameLinks(oldContent, content));
-  //   };
-  //   return <RichText value={store.get(id)} onChange={onChange} tagName="div" />;
-  // });
 
   const setVariables = newVariables =>
     setAttributes({

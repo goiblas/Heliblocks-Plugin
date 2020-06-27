@@ -1,13 +1,21 @@
 import React from "react";
 import HtmlToReact, { Parser } from "html-to-react";
-import {
-    everyNodeText,
-    isWhiteSpace,
-    isInlineTag,
-    isMultilineTag,
-    sortBy,
-} from "./utils";
+import { sortBy, isInlineTag } from "./../utils";
 
+function isWhiteSpace(str) {
+    return str.replace(/\s/g, "") === "";
+}
+function everyNodeText(children) {
+    return (
+        children &&
+        children.length > 0 &&
+        children.every(
+            node =>
+                (node.type && node.type === "text") ||
+                (node.name && isInlineTag(node.name))
+        )
+    );
+}
 class HtmlParser {
     constructor() {
         this.htmlToReactParser = new Parser();
@@ -48,74 +56,15 @@ class HtmlParser {
                 if (this.isSvg(node)) {
                     return false;
                 }
-                if (node.parent && this.isMultiline(node.parent)) {
-                    return false;
+
+                if (node.parent && everyNodeText(node.parent.children)) {
+                    return false
                 }
-                return (
-                    node.children &&
-                    everyNodeText(node.children) &&
-                    node.name &&
-                    !isInlineTag(node.name)
-                );
+                return everyNodeText(node.children)
             },
             processNode,
         };
 
-        this.instructions.push(processTextLine);
-    }
-
-    isMultiline(node) {
-        return (
-            node.children &&
-            node.children.length > 0 &&
-            node.children.every((child) => child.name && isMultilineTag(child.name))
-        );
-    }
-    replaceOrphanLinks(processNode) {
-        const processOrphanLink = {
-            priority: 0,
-            shouldProcessNode: (node) => {
-                if (this.isSvg(node)) {
-                    return false;
-                }
-                if (node.parent && this.isMultiline(node.parent)) {
-                    return false;
-                }
-
-                if (
-                    node.parent &&
-                    node.parent.children &&
-                    everyNodeText(node.parent.children) &&
-                    node.parent.name &&
-                    !isInlineTag(node.parent.name)
-                ) {
-                    return false;
-                }
-                return node.name && node.name === "a";
-            },
-            processNode,
-        };
-        this.instructions.push(processOrphanLink);
-    }
-    replaceMultilineBy(processNode) {
-        const processTextLine = {
-            priority: 8,
-            shouldProcessNode: (node) => {
-                if (this.isSvg(node)) {
-                    return false;
-                }
-                if (node.parent && this.isMultiline(node.parent)) {
-                    return false;
-                }
-                return (
-                    node.children &&
-                    node.children.length > 0 &&
-                    (node.children.every((child) => child.name && child.name === "p") ||
-                        node.children.every((child) => child.name && child.name === "li"))
-                );
-            },
-            processNode,
-        };
         this.instructions.push(processTextLine);
     }
 

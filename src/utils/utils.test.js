@@ -1,4 +1,4 @@
-import { restoreClassnameLinks } from "./restoreClassnameLinks";
+import { sortBy, restoreClassnameLinks } from ".";
 
 describe("Restore classname links", () => {
   test("should restore classnames from backup content", () => {
@@ -16,3 +16,21 @@ describe("Restore classname links", () => {
     expect(restoreClassnameLinks(old, newContent)).toContain(newContent);
   });
 });
+
+describe('sortBy', () => {
+    test('should sort by property', () => {
+        const origin = [
+            { priority: 10 },
+            { priority: 20 },
+            { withOutPrioriy: 100 },
+            { priority: 20, other: 1 }
+        ]
+        const expected = [
+            { priority: 20 },
+            { priority: 20, other: 1 },
+            { priority: 10 },
+            { withOutPrioriy: 100 }
+        ]
+        expect( sortBy(origin, 'priority') ).toStrictEqual( expected )
+    });
+})
