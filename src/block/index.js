@@ -2,12 +2,11 @@ import { registerBlockType } from "@wordpress/blocks";
 import { __ } from "@wordpress/i18n";
 import edit from "./edit";
 import save from "./save";
-
-import { TEXT_DOMAIN } from "./../config";
+import icon from "./icon";
 
 registerBlockType("lab-heliblock-builder/lab-heliblock-builder", {
-  title: __("Heliblock Builder", TEXT_DOMAIN),
-  icon: "lock",
+  title: "Heliblocks",
+  icon,
   category: "layout",
   supports: {
     align: true
@@ -33,10 +32,6 @@ registerBlockType("lab-heliblock-builder/lab-heliblock-builder", {
       type: "string",
       default: ""
     },
-    // alignment: {
-    //   type: "string",
-    //   default: "normal"
-    // },
     store: {
       type: "string",
       default: "[]"

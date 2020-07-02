@@ -5,17 +5,13 @@
  *
  * @wordpress-plugin
  * Plugin Name: Helibocks
- * Version:     1.0.0
+ * Version:     0.1.0
  * Author:      Jesús Olazagoitia
  * Author URI:  https://goiblas.com
  * License:     GPL2+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
 defined('ABSPATH') || exit;
-
-define( 'HELIBLOCKS_REST_NAMESPACE', 'heliblocks/v1' );
-define( 'HELIBLOCKS_TOKENS', 'heliblocks_tokens' );
-define( 'HELIBLOCKS_STYLESHEET', 'heliblocks_stylesheet' );
 
 add_action( 'init', 'heliblocks_init_register_block' );
 
@@ -60,8 +56,3 @@ function heliblocks_init_register_block() {
 		wp_set_script_translations( 'heliblocks_script_register_block', 'heliblocks' );
 	  }
 }
-
-// include __DIR__ . '/lib/register-variables.php';
-// include __DIR__ . '/lib/rest-api-endpoints.php';
-// include __DIR__ . '/lib/enqueue-stylesheet-variables.php';
-

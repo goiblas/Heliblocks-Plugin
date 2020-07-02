@@ -17,7 +17,7 @@ const Edit = ({ attributes, setAttributes, className, clientId }) => {
     return (
       <Explore
         onClose={() => dispatch("core/block-editor").removeBlock(clientId)}
-        onChoose={({ html, css, variables, alignment, wrapperClassname }) => {
+        onChoose={({ html, css, variables, wrapperClassname }) => {
           setAttributes({
             html,
             css,

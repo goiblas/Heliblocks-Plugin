@@ -4,5 +4,5 @@ msgstr ""
 "X-Generator: babel-plugin-makepot\n"
 
 #: src/block/index.js:9
-msgid "Heliblock Builder"
+msgid "Heliblocks"
 msgstr ""
