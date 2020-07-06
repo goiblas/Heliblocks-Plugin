@@ -1,0 +1,12 @@
+/src
+/node_modules
+/.wordpress-org
+/.github
+/.git
+
+.babelrc
+.gitignore
+.distignore
+package-lock.json
+package.json
+README.md

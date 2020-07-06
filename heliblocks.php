@@ -5,7 +5,8 @@
  *
  * @wordpress-plugin
  * Plugin Name: Helibocks
- * Version:     0.1.0
+ * Version:     1.0.0
+ * Description: Use unique structures in your posts and pages, with Block editor  and collection snippets ofHeliblocks
  * Author:      Jesús Olazagoitia
  * Author URI:  https://goiblas.com
  * License:     GPL2+

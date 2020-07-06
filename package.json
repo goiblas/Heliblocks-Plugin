@@ -1,11 +1,11 @@
 {
-  "name": "lab-heliblock",
-  "version": "0.1.0",
+  "name": "heliblocks-plugin",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "wp-scripts test-unit-js",
-    "test:watch": "wp-scripts test-unit-js --watchAll",
+    "test:watch": "wp-sscripts test-unit-js --watchAll",
     "lint:js:src": "wp-scripts lint-js ./src",
     "build": "wp-scripts build",
     "dev": "wp-scripts start",

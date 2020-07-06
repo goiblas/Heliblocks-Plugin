@@ -1,9 +1,5 @@
-# Heliblock Plugin
-Heliblocks integration plugin with WordPress
-
-## Setup
-- Download this folder inside your plugins directory
-- Active the plugin
+# Heliblocks
+Use unique structures in your posts and pages, with Block editor and collection snippets of Heliblocks
 
 ## Develop
 It is necessary to have a file called `config.js` inside the `src` folder that exposes the following constants
