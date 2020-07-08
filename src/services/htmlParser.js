@@ -1,6 +1,6 @@
 import React from "react";
 import HtmlToReact, { Parser } from "html-to-react";
-import { sortBy, isInlineTag } from "./../utils";
+import { isInlineTag } from "./../utils";
 
 function isWhiteSpace(str) {
     return str.replace(/\s/g, "") === "";
@@ -30,7 +30,6 @@ class HtmlParser {
     }
     replaceIframeBy(processNode) {
         const processIframe = {
-            priority: 9,
             shouldProcessNode: (node) => {
                 return node.name && node.name === "iframe";
             },
@@ -40,7 +39,6 @@ class HtmlParser {
     }
     replaceImageBy(processNode) {
         const processImage = {
-            priority: 10,
             shouldProcessNode: (node) => {
                 return node.name && node.name === "img";
             },
@@ -48,15 +46,29 @@ class HtmlParser {
         };
         this.instructions.push(processImage);
     }
-    replaceTextLineBy(processNode) {
-        const processTextLine = {
-            priority: 9,
 
+    replaceLabelBy(processNode) {
+        const processLabel = {
             shouldProcessNode: (node) => {
                 if (this.isSvg(node)) {
                     return false;
                 }
+                return node.name && node.name === "label"
+            },
+            processNode,
+        };
 
+        this.instructions.push(processLabel);
+    }
+    replaceTextLineBy(processNode) {
+        const processTextLine = {
+            shouldProcessNode: (node) => {
+                if (this.isSvg(node)) {
+                    return false;
+                }
+                if (node.name && node.name === "label") {
+                    return false
+                }
                 if (node.parent && everyNodeText(node.parent.children)) {
                     return false
                 }
@@ -90,8 +102,7 @@ class HtmlParser {
     }
 
     getInstructions() {
-        const instructionsSorted = sortBy(this.instructions, "priority");
-        return [...instructionsSorted, this.defaultProcess];
+        return [...this.instructions, this.defaultProcess];
     }
 
     parser(htmlInput) {

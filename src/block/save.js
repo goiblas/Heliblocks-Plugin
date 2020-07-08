@@ -18,6 +18,16 @@ const Save = ({ attributes, setAttributes, className }) => {
     return <iframe src={store.get(counterId++)} {...node.attribs} />;
   });
 
+  htmlParser.replaceLabelBy((node, children, index) => {
+    return createElement(RichText.Content, {
+      value: store.get(counterId++),
+      tagName: node.name,
+      className: node.attribs.class,
+      htmlFor: node.attribs.for,
+      id: node.attribs.id
+    });
+  });
+
   htmlParser.replaceTextLineBy((node, children, index) => {
     return createElement(RichText.Content, {
       value: store.get(counterId++),

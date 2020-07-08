@@ -6,6 +6,7 @@ describe("Parser", () => {
   const TextInline = ({ children }) => <div data-testid="text">{children}</div>;
   const Image = ({ src }) => <div data-testid="image">{src}</div>;
   const Iframe = ({ src }) => <div data-testid="iframe">{src}</div>;
+  const Label = ({ children }) => <div data-testid="label">{children}</div>;
 
   const htmlParser = new HtmlParser();
   htmlParser.replaceTextLineBy((node, children, index) => (
@@ -16,6 +17,9 @@ describe("Parser", () => {
   ));
   htmlParser.replaceIframeBy((node, children, index) => (
     <Iframe key={index} src={node.attribs.src} />
+  ));
+  htmlParser.replaceLabelBy((node, children, index) => (
+    <Label key={index}>{children}</Label>
   ));
 
   test('should replace iframe', () => {
@@ -76,6 +80,16 @@ describe("Parser", () => {
     const wrapper = shallow(Component);
     expect(wrapper.html()).toBe(
       '<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500"><g><path d="M12.9"></path></g></svg>'
+    );
+  });
+
+  test("should replace label tag", () => {
+    const Component = htmlParser.parser(
+      '<div><label>Label</label></div>'
+    );
+    const wrapper = shallow(Component);
+    expect(wrapper.html()).toBe(
+      '<div><div data-testid="label">Label</div></div>'
     );
   });
 });

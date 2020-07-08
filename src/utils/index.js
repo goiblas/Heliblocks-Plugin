@@ -9,26 +9,6 @@ import { TEXT_DOMAIN } from "./../config";
 export const i18n = text => __(text, TEXT_DOMAIN);
 
 /**
- * Sorty array by property
- * 
- * @param {array} arr Anordered array
- * @param {string} property Property to sort 
- */
-export function sortBy(arr, property) {
-    return arr.sort((a, b) => {
-        if (a.hasOwnProperty(property) && b.hasOwnProperty(property)) {
-        return a[property] > b[property] ? -1 : 1;
-        }
-
-        if (a.hasOwnProperty(property)) return -1;
-        if (b.hasOwnProperty(property)) return 1;
-
-        return 0;
-    });
-}
-
-
-/**
  * Restore classname links from backup
  * 
  * @param {sring} backup Before html

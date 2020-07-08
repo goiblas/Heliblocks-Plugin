@@ -6,7 +6,7 @@
  * @wordpress-plugin
  * Plugin Name: Heliblocks
  * Version:     1.0.0
- * Description: Use unique structures in your posts and pages, with Block editor  and collection snippets ofHeliblocks
+ * Description: Use unique structures in your posts and pages, with Block editor and collection snippets of Heliblocks.
  * Author:      Jesús Olazagoitia
  * Author URI:  https://goiblas.com
  * License:     GPL2+
@@ -43,7 +43,7 @@ function heliblocks_init_register_block() {
 		)
 	);
  
-	register_block_type( 'lab-heliblock-builder/lab-heliblock-builder', array(
+	register_block_type( 'heliblocks/heliblocks', array(
 		'editor_script' => 'heliblocks_script_register_block',
 		'editor_style' => 'heliblocks_css_editor'
 	 ));

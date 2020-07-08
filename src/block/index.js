@@ -4,7 +4,7 @@ import edit from "./edit";
 import save from "./save";
 import icon from "./icon";
 
-registerBlockType("lab-heliblock-builder/lab-heliblock-builder", {
+registerBlockType("heliblocks/heliblocks", {
   title: "Heliblocks",
   icon,
   category: "layout",

@@ -18,5 +18,9 @@ This plugin is open source software, and you may actively contribute on [Github]
 
 == Changelog ==
 
+= 1.1 =
+* **Improvement.** Parse label tags
+* **Bug Fix.** Type errors
+
 = 1.0 =
 * Initial release on WordPress.org

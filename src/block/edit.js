@@ -79,11 +79,36 @@ const Edit = ({ attributes, setAttributes, className, clientId }) => {
   });
 
 
+  htmlParser.replaceLabelBy((node, children, index) => {
+    const id = counterId++;
+
+    if (!store.has(id)) {
+      let content = ReactDOMServer.renderToStaticMarkup(children);
+      store.set(id, content);
+    }
+
+    const onChange = content => {
+      const oldContent = store.get(id);
+      store.set(id, restoreClassnameLinks(oldContent, content));
+    };
+
+    return (
+      <label className={node.attribs.class} htmlFor={node.attribs.for} id={node.attribs.id}>
+        <RichText
+          value={store.get(id)}
+          onChange={onChange}
+          tagName="div"
+          style={{display: "inline-block", verticalAlign: "middle"}}
+        />
+      </label>
+    );
+  });
+
   htmlParser.replaceTextLineBy((node, children, index) => {
     const id = counterId++;
     const tagName = node.name === "a" ? "div" : node.name;
     const className = node.name === "a" ? null : node.attribs.class;
-    
+
     if (!store.has(id)) {
       let content = null;
       if (node.name === "a") {
