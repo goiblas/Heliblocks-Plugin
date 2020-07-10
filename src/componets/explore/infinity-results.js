@@ -19,8 +19,10 @@ const InfinityResults = ({ hits, hasMore, refine, onChoose }) => {
 
   useEffect(() => {
     const observer = new IntersectionObserver(onSentinelIntersection);
+    observer.observe(sentinel.current);
+
     return () => observer.disconnect();
-  }, [onSentinelIntersection]);
+  }, [onSentinelIntersection, sentinel]);
 
   return (
     <>
