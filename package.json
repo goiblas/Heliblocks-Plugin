@@ -1,6 +1,6 @@
 {
   "name": "heliblocks-plugin",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -15,8 +15,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@emotion/core": "^10.0.28",
-    "@emotion/styled": "^10.0.27",
     "@wordpress/blocks": "^6.17.0",
     "@wordpress/e2e-test-utils": "^2.1.0",
     "@wordpress/editor": "^9.17.0",
@@ -24,12 +22,7 @@
     "@wordpress/scripts": "^11.0.0",
     "@wordpress/server-side-render": "^1.13.0",
     "algoliasearch": "^3.35.1",
-    "chroma-js": "^2.1.0",
-    "emotion": "^10.0.27",
-    "emotion-server": "^10.0.27",
     "html-to-react": "^1.4.3",
-    "html2react": "^1.2.1",
-    "lodash.throttle": "^4.1.1",
     "react": "^16.13.1",
     "react-attr-converter": "^0.3.1",
     "react-dom": "^16.13.1",

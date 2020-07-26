@@ -18,7 +18,9 @@ This plugin is open source software, and you may actively contribute on [Github]
 
 == Changelog ==
 
-= 1.1.1 =
+= 2.0.0 =
+* **Improvement.** Parser refactor
+* **Improvement.** Parser refactor
 * **Bug Fix.** Fix search results
 
 = 1.1.0 =

@@ -13,3 +13,7 @@ const Parser = ({ version, ...props}) => {
 
 export const version = "v1"; 
 export default Parser;
+
+Parser.defaultProps = {
+    version: "v1"
+}

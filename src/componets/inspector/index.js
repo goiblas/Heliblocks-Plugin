@@ -7,7 +7,7 @@ import {
   Icon,
 } from "@wordpress/components";
 import { MediaSlot } from "./../slotfill";
-
+import { i18n } from "./../../utils";
 import ColorSelector from "./colorSelector";
 
 const ResetButton = ({ disabled, onClick, style }) => (
@@ -89,7 +89,7 @@ const Inspector = ({ variables, setVariables }) => {
 
   return (
     <InspectorControls>
-      <PanelBody title="Settings" initialOpen={true}>
+      <PanelBody title={i18n("Settings")} initialOpen={true}>
         {variables.map((variable, index) => (
           <VariableControl
             {...variable}
@@ -98,7 +98,7 @@ const Inspector = ({ variables, setVariables }) => {
           />
         ))}
       </PanelBody>
-      <PanelBody title="Media" initialOpen={false}>
+      <PanelBody title={i18n("Media")} initialOpen={false}>
         <div style={{ marginBottom: "16px" }}>
           <MediaSlot />
         </div>
