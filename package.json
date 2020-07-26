@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "wp-scripts test-unit-js",
-    "test:watch": "wp-sscripts test-unit-js --watchAll",
+    "test:watch": "wp-scripts test-unit-js --watchAll",
     "lint:js:src": "wp-scripts lint-js ./src",
     "build": "wp-scripts build",
     "dev": "wp-scripts start",
@@ -31,12 +31,14 @@
     "html2react": "^1.2.1",
     "lodash.throttle": "^4.1.1",
     "react": "^16.13.1",
+    "react-attr-converter": "^0.3.1",
     "react-dom": "^16.13.1",
     "react-instantsearch-dom": "^6.5.0",
     "react-test-renderer": "^16.13.1",
     "scope-css": "^1.2.1"
   },
   "devDependencies": {
+    "@testing-library/react": "^10.4.7",
     "@wordpress/babel-plugin-makepot": "^3.5.0",
     "@wordpress/babel-preset-default": "^4.14.0",
     "cross-env": "^6.0.3"

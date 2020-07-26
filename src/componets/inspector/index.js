@@ -4,8 +4,10 @@ import {
   RangeControl,
   TextControl,
   Button,
-  Icon
+  Icon,
 } from "@wordpress/components";
+import { MediaSlot } from "./../slotfill";
+
 import ColorSelector from "./colorSelector";
 
 const ResetButton = ({ disabled, onClick, style }) => (
@@ -74,7 +76,7 @@ const VariableControl = props => {
   }
   return null;
 };
-const Inspector = ({ variables, setVariables, media }) => {
+const Inspector = ({ variables, setVariables }) => {
   const setVariable = (name, value) => {
     const variablesUpdated = variables.map(currentVariable => {
       if (currentVariable.variable === name) {
@@ -84,6 +86,7 @@ const Inspector = ({ variables, setVariables, media }) => {
     });
     setVariables(variablesUpdated);
   };
+
   return (
     <InspectorControls>
       <PanelBody title="Settings" initialOpen={true}>
@@ -95,11 +98,11 @@ const Inspector = ({ variables, setVariables, media }) => {
           />
         ))}
       </PanelBody>
-      {media.length > 0 ? (
-        <PanelBody title="Media">
-          <div style={{ marginBottom: "16px" }}>{media}</div>
-        </PanelBody>
-      ) : null}
+      <PanelBody title="Media" initialOpen={false}>
+        <div style={{ marginBottom: "16px" }}>
+          <MediaSlot />
+        </div>
+      </PanelBody>
     </InspectorControls>
   );
 };

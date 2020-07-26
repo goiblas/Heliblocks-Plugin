@@ -1,0 +1,245 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Parser lib should not parse svg  1`] = `
+<svg
+  height="500"
+  width="500"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <g>
+    <path
+      d="M12.9"
+    />
+  </g>
+</svg>
+`;
+
+exports[`Parser lib should not parse svg  2`] = `
+<svg
+  height="500"
+  width="500"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <g>
+    <path
+      d="M12.9"
+    />
+  </g>
+</svg>
+`;
+
+exports[`Parser lib should reemplace image 1`] = `
+<div>
+  <div
+    aria-multiline="true"
+    class="rich-text block-editor-rich-text__editable"
+    contenteditable="true"
+    role="textbox"
+    style="white-space: pre-wrap;"
+  >
+    hello world!
+  </div>
+  <img
+    alt="alt"
+    src="image.jpg"
+  />
+</div>
+`;
+
+exports[`Parser lib should reemplace image 2`] = `
+<div>
+  <div>
+    <div>
+      hello world!
+    </div>
+  </div>
+  <img
+    alt="alt"
+    src="image.jpg"
+  />
+</div>
+`;
+
+exports[`Parser lib should reemplace multiline tag 1`] = `
+<div>
+  <ul>
+    <li
+      aria-multiline="true"
+      class="rich-text block-editor-rich-text__editable"
+      contenteditable="true"
+      role="textbox"
+      style="white-space: pre-wrap;"
+    >
+      hello
+    </li>
+    <li
+      aria-multiline="true"
+      class="rich-text block-editor-rich-text__editable"
+      contenteditable="true"
+      role="textbox"
+      style="white-space: pre-wrap;"
+    >
+      world
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Parser lib should reemplace multiline tag 2`] = `
+<div>
+  <ul>
+    <li>
+      <div>
+        hello
+      </div>
+    </li>
+    <li>
+      <div>
+        world
+      </div>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Parser lib should reemplace text line 1`] = `
+<div
+  aria-multiline="true"
+  class="rich-text block-editor-rich-text__editable"
+  contenteditable="true"
+  role="textbox"
+  style="white-space: pre-wrap;"
+>
+  hello world!
+</div>
+`;
+
+exports[`Parser lib should reemplace text line 2`] = `
+<div>
+  <div>
+    hello world!
+  </div>
+</div>
+`;
+
+exports[`Parser lib should replace attributes to props 1`] = `
+<div
+  aria-multiline="true"
+  class="rich-text block-editor-rich-text__editable classname"
+  contenteditable="true"
+  role="textbox"
+  style="white-space: pre-wrap;"
+>
+  hello world!
+</div>
+`;
+
+exports[`Parser lib should replace attributes to props 2`] = `
+<div
+  class="classname"
+>
+  <div>
+    hello world!
+  </div>
+</div>
+`;
+
+exports[`Parser lib should replace complex estructures 1`] = `
+<div
+  class="wrapper"
+>
+  <div
+    class="image"
+  >
+    <img
+      src="https://source.unsplash.com/random"
+      width="500"
+    />
+  </div>
+  <div
+    class="content"
+  >
+    <h2
+      aria-multiline="true"
+      class="rich-text block-editor-rich-text__editable"
+      contenteditable="true"
+      role="textbox"
+      style="white-space: pre-wrap;"
+    >
+      hola mundo
+    </h2>
+    <p
+      aria-multiline="true"
+      class="rich-text block-editor-rich-text__editable"
+      contenteditable="true"
+      role="textbox"
+      style="white-space: pre-wrap;"
+    >
+      lorem
+    </p>
+    <p
+      aria-multiline="true"
+      class="rich-text block-editor-rich-text__editable"
+      contenteditable="true"
+      role="textbox"
+      style="white-space: pre-wrap;"
+    >
+      lorem
+    </p>
+  </div>
+</div>
+`;
+
+exports[`Parser lib should replace label 1`] = `
+<div
+  aria-multiline="true"
+  class="rich-text block-editor-rich-text__editable"
+  contenteditable="true"
+  role="textbox"
+  style="white-space: pre-wrap;"
+>
+  <label>
+    Label
+  </label>
+  
+</div>
+`;
+
+exports[`Parser lib should replace label 2`] = `
+<div>
+  <div>
+    <label>
+      Label
+    </label>
+  </div>
+</div>
+`;
+
+exports[`Parser lib should replace orphan links 1`] = `
+<div>
+  <p
+    aria-multiline="true"
+    class="rich-text block-editor-rich-text__editable"
+    contenteditable="true"
+    role="textbox"
+    style="white-space: pre-wrap;"
+  >
+    hello
+  </p>
+  <div
+    aria-multiline="true"
+    class="rich-text block-editor-rich-text__editable"
+    contenteditable="true"
+    role="textbox"
+    style="white-space: pre-wrap;"
+  >
+    <a
+      class=""
+      href="#"
+    >
+      Orphan link
+    </a>
+    
+  </div>
+</div>
+`;

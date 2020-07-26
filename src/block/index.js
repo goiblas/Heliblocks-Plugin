@@ -35,6 +35,14 @@ registerBlockType("heliblocks/heliblocks", {
     store: {
       type: "string",
       default: "[]"
+    },
+    parser: {
+      type: "string",
+      default: ""
+    },
+    processors: {
+      type: "array",
+      default: []
     }
   },
   edit,
