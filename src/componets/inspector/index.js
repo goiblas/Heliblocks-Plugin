@@ -29,7 +29,7 @@ const ResetButton = ({ disabled, onClick, style }) => (
 const VariableControl = props => {
   if (props.type === "color") {
     return (
-      <div style={{ display: "flex", alignItems: "flex-end" }}>
+      <div style={{ display: "grid", alignItems: "center", gridTemplateColumns: "1fr auto" }}>
         <ColorSelector
           label={props.label}
           color={props.value}
@@ -44,7 +44,7 @@ const VariableControl = props => {
     );
   } else if (props.type === "value" || props.type === "size") {
     return (
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <div style={{ display: "grid", alignItems: "center", gridTemplateColumns: "1fr auto" }}>
         <RangeControl
           label={props.label}
           value={props.value}
