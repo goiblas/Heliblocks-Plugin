@@ -1,30 +1,31 @@
-import Styles from "./../componets/styles";
+import Global from "./../componets/global";
 import Parser, { getProcessors, Store } from "./../componets/parser";
 
-const Save = ({ attributes, setAttributes, className }) => {
+const Save = ({ attributes, setAttributes, className, clientId }) => {
   if (!attributes.isChoosed) {
     return null;
   }
 
-  const setStore = store => setAttributes({ store });
+  const setStore = (store) => setAttributes({ store });
   const store = new Store(attributes.store, setStore);
-  
+
   return (
     <div className={className}>
-      <Styles
+      <Global
+        id={`hb-${clientId}`}
+        encapsulated={attributes.encapsulated}
         css={attributes.css}
+        wrapperClassname={attributes.wrapperClassname}
         variables={attributes.variables}
-        root={attributes.wrapperClassname}
-      />
-      <div className={attributes.wrapperClassname}>
+      >
         <Parser
-            version={attributes.parser}
-            store={store}
-            processors={getProcessors(attributes.processors)}
-            html={attributes.html}
-            environment="save"
-          />
-        </div>
+          version={attributes.parser}
+          store={store}
+          processors={getProcessors(attributes.processors)}
+          html={attributes.html}
+          environment="save"
+        />
+      </Global>
     </div>
   );
 };

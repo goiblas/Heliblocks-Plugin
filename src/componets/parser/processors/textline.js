@@ -1,28 +1,14 @@
 import React from "react";
 import { RichText } from "@wordpress/block-editor";
 import { restoreClassnameLinks } from "../../../utils";
-const inlineTags = new Set(["span", "em", "i", "u", "strong", "a", "label" ]);
-
-function everyNodeText(children = []) {
-  return (
-    children.length > 0 &&
-    children.every(
-      node =>
-        (node.type && node.type === "text") ||
-        (node.name && inlineTags.has(node.name))
-    )
-  );
-}
+import { everyNodeText, isInlineTag } from "./shared";
 
 export const textlineProcessor = {
     priority: 2,
     name: "textline@v1",
     test: function(node) {
       return (
-        node.children &&
-        everyNodeText(node.children) &&
-        node.name &&
-        !inlineTags.has(node.name)
+        !isInlineTag(node.name) && everyNodeText(node.children)
       );
     },
     edit: ({ attributes, value, setValue, id, name }) => {

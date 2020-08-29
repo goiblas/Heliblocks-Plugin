@@ -18,6 +18,10 @@ This plugin is open source software, and you may actively contribute on [Github]
 
 == Changelog ==
 
+= 2.1.0 =
+* **Feature.** Available multiline 
+* **Improvement.** Repeated blocks on page
+
 = 2.0.1 =
 * **Update.** Tested WordPress version
 * **Bug Fix.** Width inspector controls

@@ -43,6 +43,10 @@ registerBlockType("heliblocks/heliblocks", {
     processors: {
       type: "array",
       default: []
+    },
+    encapsulated: {
+      type: "boolean",
+      default: false
     }
   },
   edit,

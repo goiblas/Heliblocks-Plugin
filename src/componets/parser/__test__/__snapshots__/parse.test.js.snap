@@ -62,23 +62,17 @@ exports[`Parser lib should reemplace image 2`] = `
 
 exports[`Parser lib should reemplace multiline tag 1`] = `
 <div>
-  <ul>
-    <li
-      aria-multiline="true"
-      class="rich-text block-editor-rich-text__editable"
-      contenteditable="true"
-      role="textbox"
-      style="white-space: pre-wrap;"
-    >
+  <ul
+    aria-multiline="true"
+    class="rich-text block-editor-rich-text__editable"
+    contenteditable="true"
+    role="textbox"
+    style="white-space: pre-wrap;"
+  >
+    <li>
       hello
     </li>
-    <li
-      aria-multiline="true"
-      class="rich-text block-editor-rich-text__editable"
-      contenteditable="true"
-      role="textbox"
-      style="white-space: pre-wrap;"
-    >
+    <li>
       world
     </li>
   </ul>
@@ -88,16 +82,14 @@ exports[`Parser lib should reemplace multiline tag 1`] = `
 exports[`Parser lib should reemplace multiline tag 2`] = `
 <div>
   <ul>
-    <li>
-      <div>
+    <div>
+      <li>
         hello
-      </div>
-    </li>
-    <li>
-      <div>
+      </li>
+      <li>
         world
-      </div>
-    </li>
+      </li>
+    </div>
   </ul>
 </div>
 `;
@@ -140,6 +132,36 @@ exports[`Parser lib should replace attributes to props 2`] = `
 >
   <div>
     hello world!
+  </div>
+</div>
+`;
+
+exports[`Parser lib should replace by multiline component 1`] = `
+<div
+  aria-multiline="true"
+  class="rich-text block-editor-rich-text__editable"
+  contenteditable="true"
+  role="textbox"
+  style="white-space: pre-wrap;"
+>
+  <p>
+    hello
+  </p>
+  <p>
+    world
+  </p>
+</div>
+`;
+
+exports[`Parser lib should replace by multiline component 2`] = `
+<div>
+  <div>
+    <p>
+      hello
+    </p>
+    <p>
+      world
+    </p>
   </div>
 </div>
 `;

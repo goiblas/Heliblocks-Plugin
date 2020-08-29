@@ -2,9 +2,13 @@ import { dispatch } from "@wordpress/data";
 import Explore from "../componets/explore";
 import Inspector from "../componets/inspector/";
 import ErrorBoundary from "../componets/errorBoundary";
-import Styles from "./../componets/styles";
-import Parser, { getProcessors, getCurrentVersion, Store } from "./../componets/parser";
+import Parser, {
+  getProcessors,
+  getCurrentVersion,
+  Store,
+} from "./../componets/parser";
 import { SlotFillProvider } from "./../componets/slotfill";
+import Global from "./../componets/global";
 
 const Edit = ({ attributes, setAttributes, className, clientId }) => {
   if (!attributes.isChoosed) {
@@ -12,29 +16,30 @@ const Edit = ({ attributes, setAttributes, className, clientId }) => {
       <Explore
         onClose={() => dispatch("core/block-editor").removeBlock(clientId)}
         onChoose={({ html, css, variables, wrapperClassname }) => {
-          const { parser, processors} = getCurrentVersion();
+          const { parser, processors } = getCurrentVersion();
           setAttributes({
             parser,
             processors,
             html,
             css,
-            variables: variables.map(variable => ({
+            variables: variables.map((variable) => ({
               ...variable,
-              default: variable.value
+              default: variable.value,
             })),
-            wrapperClassname,
-            isChoosed: true
+            wrapperClassname: wrapperClassname,
+            isChoosed: true,
+            encapsulated: true,
           });
         }}
       />
     );
   }
-  const setStore = store => setAttributes({ store });
+  const setStore = (store) => setAttributes({ store });
   const store = new Store(attributes.store, setStore);
-  
-  const setVariables = newVariables =>
+
+  const setVariables = (newVariables) =>
     setAttributes({
-      variables: newVariables
+      variables: newVariables,
     });
 
   return (
@@ -45,23 +50,23 @@ const Edit = ({ attributes, setAttributes, className, clientId }) => {
           setVariables={setVariables}
         />
         <div className={className}>
-          <Styles
+          <Global
+            id={`hb-${clientId}`}
+            encapsulated={attributes.encapsulated}
             css={attributes.css}
+            wrapperClassname={attributes.wrapperClassname}
             variables={attributes.variables}
-            root={attributes.wrapperClassname}
-          />
-
-          <div className={attributes.wrapperClassname}>
+          >
             <Parser
-                version={attributes.parser}
-                store={store}
-                processors={getProcessors(attributes.processors)}
-                html={attributes.html}
-                environment="edit"
-              />
-          </div>
+              version={attributes.parser}
+              store={store}
+              processors={getProcessors(attributes.processors)}
+              html={attributes.html}
+              environment="edit"
+            />
+          </Global>
         </div>
-        </SlotFillProvider>
+      </SlotFillProvider>
     </ErrorBoundary>
   );
 };

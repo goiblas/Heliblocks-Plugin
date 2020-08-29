@@ -82,4 +82,12 @@ describe('Parser lib', () => {
 
         expect(edit.container.firstChild).toMatchSnapshot();
     });
+    test('should replace by multiline component', () => {
+        const html = '<div><p>hello</p><p>world</p></div>';
+
+        const edit = render(<Parser version={version} html={html} processors={processors} environment="edit" store={store} />)
+        const save = render(<Parser version={version} html={html} processors={processors} environment="save" store={store} />)
+        expect(edit.container.firstChild).toMatchSnapshot();
+        expect(save.container.firstChild).toMatchSnapshot();
+    });
 });
