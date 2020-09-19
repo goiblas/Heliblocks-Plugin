@@ -1,7 +1,7 @@
 import Global from "./../componets/global";
 import Parser, { getProcessors, Store } from "./../componets/parser";
 
-const Save = ({ attributes, setAttributes, className, clientId }) => {
+const Save = ({ attributes, setAttributes, className }) => {
   if (!attributes.isChoosed) {
     return null;
   }
@@ -12,7 +12,7 @@ const Save = ({ attributes, setAttributes, className, clientId }) => {
   return (
     <div className={className}>
       <Global
-        id={`hb-${clientId}`}
+        id={`hb-${attributes.id}`}
         encapsulated={attributes.encapsulated}
         css={attributes.css}
         wrapperClassname={attributes.wrapperClassname}

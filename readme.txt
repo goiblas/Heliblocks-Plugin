@@ -18,6 +18,9 @@ This plugin is open source software, and you may actively contribute on [Github]
 
 == Changelog ==
 
+= 2.1.1 =
+* **Bug Fix.** block id
+
 = 2.1.0 =
 * **Feature.** Available multiline 
 * **Improvement.** Repeated blocks on page

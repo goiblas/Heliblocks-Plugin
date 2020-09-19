@@ -29,6 +29,7 @@ const Edit = ({ attributes, setAttributes, className, clientId }) => {
             wrapperClassname: wrapperClassname,
             isChoosed: true,
             encapsulated: true,
+            id: clientId
           });
         }}
       />
@@ -44,14 +45,14 @@ const Edit = ({ attributes, setAttributes, className, clientId }) => {
 
   return (
     <ErrorBoundary>
-      <SlotFillProvider id={clientId}>
+      <SlotFillProvider id={attributes.id}>
         <Inspector
           variables={attributes.variables}
           setVariables={setVariables}
         />
         <div className={className}>
           <Global
-            id={`hb-${clientId}`}
+            id={`hb-${attributes.id}`}
             encapsulated={attributes.encapsulated}
             css={attributes.css}
             wrapperClassname={attributes.wrapperClassname}

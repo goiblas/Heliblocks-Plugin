@@ -47,6 +47,10 @@ registerBlockType("heliblocks/heliblocks", {
     encapsulated: {
       type: "boolean",
       default: false
+    },
+    id: {
+      type: "string",
+      default: "undefined"
     }
   },
   edit,
