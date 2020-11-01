@@ -4,8 +4,8 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "test": "wp-scripts test-unit-js",
-    "test:watch": "wp-scripts test-unit-js --watchAll",
+    "test": "wp-scripts test-unit-js  --env=jest-environment-jsdom-sixteen",
+    "test:watch": "wp-scripts test-unit-js --watchAll --env=jest-environment-jsdom-sixteen",
     "lint:js:src": "wp-scripts lint-js ./src",
     "build": "wp-scripts build",
     "dev": "wp-scripts start",
@@ -17,7 +17,7 @@
   "dependencies": {
     "@wordpress/blocks": "^6.17.0",
     "@wordpress/e2e-test-utils": "^2.1.0",
-    "@wordpress/editor": "^9.17.0",
+    "@wordpress/editor": "^9.24.1",
     "@wordpress/element": "^2.14.0",
     "@wordpress/scripts": "^11.0.0",
     "@wordpress/server-side-render": "^1.13.0",
@@ -28,12 +28,21 @@
     "react-dom": "^16.13.1",
     "react-instantsearch-dom": "^6.5.0",
     "react-test-renderer": "^16.13.1",
+    "react-timeago": "^5.2.0",
     "scope-css": "^1.2.1"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^10.4.7",
+    "@testing-library/user-event": "^12.1.10",
     "@wordpress/babel-plugin-makepot": "^3.5.0",
     "@wordpress/babel-preset-default": "^4.14.0",
-    "cross-env": "^6.0.3"
+    "cross-env": "^6.0.3",
+    "jest-environment-jsdom-sixteen": "^1.0.3"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.js"
+    ]
   }
 }

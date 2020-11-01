@@ -32,7 +32,7 @@ exports[`Parser lib should reemplace image 1`] = `
 <div>
   <div
     aria-multiline="true"
-    class="rich-text block-editor-rich-text__editable"
+    class="block-editor-rich-text__editable rich-text"
     contenteditable="true"
     role="textbox"
     style="white-space: pre-wrap;"
@@ -64,7 +64,7 @@ exports[`Parser lib should reemplace multiline tag 1`] = `
 <div>
   <ul
     aria-multiline="true"
-    class="rich-text block-editor-rich-text__editable"
+    class="block-editor-rich-text__editable rich-text"
     contenteditable="true"
     role="textbox"
     style="white-space: pre-wrap;"
@@ -97,7 +97,7 @@ exports[`Parser lib should reemplace multiline tag 2`] = `
 exports[`Parser lib should reemplace text line 1`] = `
 <div
   aria-multiline="true"
-  class="rich-text block-editor-rich-text__editable"
+  class="block-editor-rich-text__editable rich-text"
   contenteditable="true"
   role="textbox"
   style="white-space: pre-wrap;"
@@ -117,7 +117,7 @@ exports[`Parser lib should reemplace text line 2`] = `
 exports[`Parser lib should replace attributes to props 1`] = `
 <div
   aria-multiline="true"
-  class="rich-text block-editor-rich-text__editable classname"
+  class="block-editor-rich-text__editable classname rich-text"
   contenteditable="true"
   role="textbox"
   style="white-space: pre-wrap;"
@@ -139,7 +139,7 @@ exports[`Parser lib should replace attributes to props 2`] = `
 exports[`Parser lib should replace by multiline component 1`] = `
 <div
   aria-multiline="true"
-  class="rich-text block-editor-rich-text__editable"
+  class="block-editor-rich-text__editable rich-text"
   contenteditable="true"
   role="textbox"
   style="white-space: pre-wrap;"
@@ -183,7 +183,7 @@ exports[`Parser lib should replace complex estructures 1`] = `
   >
     <h2
       aria-multiline="true"
-      class="rich-text block-editor-rich-text__editable"
+      class="block-editor-rich-text__editable rich-text"
       contenteditable="true"
       role="textbox"
       style="white-space: pre-wrap;"
@@ -192,7 +192,7 @@ exports[`Parser lib should replace complex estructures 1`] = `
     </h2>
     <p
       aria-multiline="true"
-      class="rich-text block-editor-rich-text__editable"
+      class="block-editor-rich-text__editable rich-text"
       contenteditable="true"
       role="textbox"
       style="white-space: pre-wrap;"
@@ -201,7 +201,7 @@ exports[`Parser lib should replace complex estructures 1`] = `
     </p>
     <p
       aria-multiline="true"
-      class="rich-text block-editor-rich-text__editable"
+      class="block-editor-rich-text__editable rich-text"
       contenteditable="true"
       role="textbox"
       style="white-space: pre-wrap;"
@@ -215,7 +215,7 @@ exports[`Parser lib should replace complex estructures 1`] = `
 exports[`Parser lib should replace label 1`] = `
 <div
   aria-multiline="true"
-  class="rich-text block-editor-rich-text__editable"
+  class="block-editor-rich-text__editable rich-text"
   contenteditable="true"
   role="textbox"
   style="white-space: pre-wrap;"
@@ -241,7 +241,7 @@ exports[`Parser lib should replace orphan links 1`] = `
 <div>
   <p
     aria-multiline="true"
-    class="rich-text block-editor-rich-text__editable"
+    class="block-editor-rich-text__editable rich-text"
     contenteditable="true"
     role="textbox"
     style="white-space: pre-wrap;"
@@ -250,7 +250,7 @@ exports[`Parser lib should replace orphan links 1`] = `
   </p>
   <div
     aria-multiline="true"
-    class="rich-text block-editor-rich-text__editable"
+    class="block-editor-rich-text__editable rich-text"
     contenteditable="true"
     role="textbox"
     style="white-space: pre-wrap;"

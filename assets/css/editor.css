@@ -159,3 +159,15 @@
     margin-right: auto;
   }
 }
+
+/* Modal explore */
+.components-tab-panel__tabs-item.is-actived-tab,
+.components-tab-panel__tabs-item.is-actived-tab:active,
+.components-tab-panel__tabs-item.is-actived-tab:focus {
+  box-shadow: inset 0 -4px 0 0 var(--wp-admin-theme-color);
+}
+
+.hb-tab-panel .components-tab-panel__tabs {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 2rem;
+}
