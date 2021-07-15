@@ -1,5 +1,6 @@
 import { Component } from '@wordpress/element';
-import { i18n } from "./../utils"
+import { i18n } from "./../utils";
+
 export default class ErrorBoundary extends Component {
     constructor(props) {
       super(props);

@@ -3,7 +3,6 @@ import { Button } from "@wordpress/components";
 
 const ImageUpload = ({ onChange, src, alt }) => {
   const onSelectImage = media => {
-    console.log(media);
     if (media) {
       onChange({
         src: media.url,
