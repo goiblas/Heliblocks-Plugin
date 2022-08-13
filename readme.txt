@@ -4,7 +4,7 @@ Plugin URI: https://github.com/goiblas/Heliblocks
 Contributors: goiblas
 Tags: blocks, layout
 Requires at least: 5.0      
-Tested up to: 5.8
+Tested up to: 6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,6 +17,14 @@ Use unique structures in your posts and pages, with Block editor and collection 
 This plugin is open source software, and you may actively contribute on [Github](https://github.com/goiblas/Heliblocks-Plugin "Heliblocks Repository").
 
 == Changelog ==
+
+= 2.2.2 =
+* **Update.** Tested WordPress version
+* Remove explore and add deprecated warning
+
+= 2.2.1 =
+* **Improvement.** Performance
+* **Update.** Tested WordPress version
 
 = 2.2.1 =
 * **Improvement.** Performance

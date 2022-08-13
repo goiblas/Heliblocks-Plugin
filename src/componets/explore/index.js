@@ -1,53 +1,36 @@
-import { Modal , TabPanel} from "@wordpress/components";
+import { Modal } from "@wordpress/components";
 import { useState, useEffect } from "@wordpress/element";
+import { Button } from "@wordpress/components";
 
 import { i18n } from "../../utils";
-import Explore from "./explore";
-import Playground from "./playground";
-import Account from "./account";
 
-const ExploreModal = ({ onClose, onChoose }) => {
-  const [isOpen, setOpen] = useState(false);
-  useEffect(() => {
-    setOpen(true);
-  }, []);
+const ExploreModal = ({ onClose }) => {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => { setOpen(true) }, []);
+
+  const onCloseHandle = () => {
+    setOpen(false);
+    onClose();
+  }
+  if (!open) {
+    return null;
+  }
 
   return (
-    <>
-      {isOpen && (
-        <Modal
-          style={{ minWidth: "92%", height: "80vh" }}
-          title={i18n("Heliblocks")}
-          onRequestClose={onClose}
-        >
+      <Modal
+        title={i18n("Heliblocks")}
+        onRequestClose={onCloseHandle}
+      >
+        <p>
+          <strong>{i18n("This plugin has been deprecated.")}</strong> <br />
+          {i18n("Previously added blocks will continue to work normally but new ones cannot be added.")}
+        </p>
         
-        <TabPanel
-        className="hb-tab-panel"
-        activeClass="is-actived-tab"
-        style={{ borderBottom: "1px solid #ddd"}}
-        tabs={ [
-            {
-                name: 'explore',
-                title: 'Explore'
-            },
-            {
-                name: 'account',
-                title: 'Account'
-            },
-        ] }>
-        {
-            ( tab ) => {
-              if(tab.name === "explore") {
-                return <Explore onChoose={onChoose} />
-              } else {
-                return <Account onChoose={onChoose} />
-              }
-            }
-        }
-    </TabPanel>
-        </Modal>
-      )}
-    </>
+        <Button isPrimary onClick={onCloseHandle}>
+          {i18n("Accept")}
+        </Button>
+      </Modal>
   );
 };
 

@@ -1,12 +1,11 @@
 import { __ } from "@wordpress/i18n";
-import { TEXT_DOMAIN } from "./../config";
 
 /**
  * i18n 
  * 
  * @param {string} text Text to internationalize
  */
-export const i18n = text => __(text, TEXT_DOMAIN);
+export const i18n = text => __(text, "heliblocks");
 
 /**
  * Restore classname links from backup
