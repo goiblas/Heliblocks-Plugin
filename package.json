@@ -19,7 +19,7 @@
     "@wordpress/e2e-test-utils": "^2.1.0",
     "@wordpress/editor": "^9.24.1",
     "@wordpress/element": "^2.14.0",
-    "@wordpress/scripts": "^11.0.0",
+    "@wordpress/scripts": "^25.1.0",
     "@wordpress/server-side-render": "^1.13.0",
     "algoliasearch": "^3.35.1",
     "html-to-react": "^1.4.3",
